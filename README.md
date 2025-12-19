@@ -1,29 +1,28 @@
-# Firmware Example (Skeleton)
+# Firmware TryOUT (Skeleton)
 
-Lokasi: `firmware_example/`
+Basic firmware scaffold for a car wash controller.
 
-Contoh ini hanya rangka dasar untuk mikrokontroler kontrol car wash:
-- State machine sederhana (IDLE → READY → RUNNING → FAULT).
-- Placeholder HAL: init, watchdog, E-stop, kesehatan komunikasi/sensor, supply voltage, output off, langkah wash.
-- Health check: E-stop, komunikasi, sensor, tegangan suplai.
-- Logging stub.
+What’s inside:
+- Simple state machine: IDLE → READY → RUNNING → FAULT.
+- HAL placeholders: init, watchdog, E-stop, comms/sensor status, supply voltage, outputs off, wash step, logging.
+- Health checks: E-stop, comms, sensors, supply voltage.
 
-Cara pakai:
-1) Pilih toolchain (mis. ARM GCC + CMake/Make atau STM32CubeIDE).
-2) Map fungsi `hal_*` ke hardware nyata (GPIO/ADC/PWM/CAN/RS485/UART, driver motor, proteksi).
-3) Tambah scheduler (RTOS atau tick interrupt) dan protokol (CAN/RS485) untuk perintah/telemetri.
-4) Implementasi OTA/secure boot jika butuh update jarak jauh.
+How to use:
+1) Choose a toolchain (e.g., ARM GCC + CMake/Make or STM32CubeIDE).
+2) Map `hal_*` functions to real hardware (GPIO/ADC/PWM/CAN/RS485/UART, motor drivers, protections).
+3) Add a scheduler (RTOS or tick interrupt) and protocol (CAN/RS485) for commands/telemetry.
+4) Implement OTA/secure boot if you need remote updates.
 
-CMake + VS Code (contoh):
-- Pastikan `arm-none-eabi-gcc` dan `cmake` ada di PATH.
-- `CMakeLists.txt` + `toolchain-arm-gcc.cmake` sudah disiapkan (target Cortex-M4).
-- Di VS Code jalankan task:
+CMake + VS Code (example):
+- Ensure `arm-none-eabi-gcc` and `cmake` are in PATH.
+- Use `CMakeLists.txt` + `toolchain-arm-gcc.cmake` (Cortex-M4 target).
+- Run tasks in VS Code:
   - Configure: Command Palette → “Tasks: Run Task” → “CMake: Configure”
   - Build: “Tasks: Run Task” → “CMake: Build”
 
-Build cepat tanpa CMake:
-- Task “Build (arm-none-eabi-gcc direct)” menjalankan satu perintah gcc di folder ini.
+Quick build without CMake:
+- Task “Build (arm-none-eabi-gcc direct)” runs a single gcc command in this folder.
 
-Catatan:
-- Semua `TODO` harus disesuaikan dengan pinout, tegangan, dan urutan logika mesin Anda.
-- Tidak ada dependensi eksternal; file ini dimaksudkan sebagai titik awal.
+Notes:
+- All `TODO`s must match your pinout, voltages, and machine logic.
+- No external dependencies; this file is a starting point.
